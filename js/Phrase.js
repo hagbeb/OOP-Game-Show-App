@@ -20,9 +20,9 @@ class Phrase {
             let li = document.createElement('li');
             li.textContent = char;
             // set class of each li item
-            // if the char is a letter not a space, add 'letter' class. Else add 'space' class
+            // if char is a letter not a space, add 'hide' & 'letter' class. Else add 'space' class
             if (char !== ' ') {
-                li.classList.add('letter');
+                li.classList.add('hide', 'letter');
             } else {
                 li.classList.add('space');
             }
@@ -36,6 +36,11 @@ class Phrase {
     // check to see if the letter selected by the player matches a letter in the phrase
     checkLetter() {
         
+    }
+    // reveal the letters on the board that match the selection
+    showMatchedLetter() {
+        // select letter DOM elements with class name that matches letter 
+        // replace each selected element's 'hide' class with 'show' class
     }
 
 
