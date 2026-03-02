@@ -12,7 +12,7 @@ class Phrase {
     // method to add letter placeholders to the display when the game starts
     addPhraseToDisplay() {
         // get the ul element whose direct parent div has id of 'phrase'
-        const lettersList = document.querySelector('#phrase > ul');
+        let lettersList = document.querySelector('#phrase > ul');
         console.log(lettersList);
         // create li items for each letter. Loop through the letters to do so
         this.phrase.forEach(char => {
@@ -23,9 +23,12 @@ class Phrase {
             // if char is a letter not a space, add 'hide' & 'letter' class. Else add 'space' class
             if (char !== ' ') {
                 li.classList.add('hide', 'letter');
+                // also add the char as a lccass to the item, which we will use in showMatchedLetter
+                li.classList.add(char);
             } else {
                 li.classList.add('space');
             }
+
             // append li item to list item
             lettersList.appendChild(li);
         });
@@ -34,14 +37,22 @@ class Phrase {
         lettersParent;
     }
     // check to see if the letter selected by the player matches a letter in the phrase
-    checkLetter() {
-        
+    checkLetter(phrase, element) {
+        // if the phrase includes the letter (textContent) of the button (element) clicked
+        if(phrase.includes(element.textContent)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // reveal the letters on the board that match the selection
-    showMatchedLetter() {
+    showMatchedLetter(letter) {
         // select letter DOM elements with class name that matches letter 
+        let matchedElements = document.getElementsByClassName(letter);
         // replace each selected element's 'hide' class with 'show' class
+        matchedElements.forEach(element => {
+            element.classList.replace('hide', 'show');
+        });
     }
-
-
 }
+
