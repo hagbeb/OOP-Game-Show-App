@@ -7,15 +7,17 @@ class Phrase {
     // constructor. Pass in phrase we want to create. Set to 'phrase' property, set to lower case
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
+                // get the ul element whose direct parent div has id of 'phrase'
+        this.lettersList = document.querySelector('#phrase > ul');
     }
 
     // method to add letter placeholders to the display when the game starts
     addPhraseToDisplay() {
-        // get the ul element whose direct parent div has id of 'phrase'
-        let lettersList = document.querySelector('#phrase > ul');
-        console.log(lettersList);
-        // create li items for each letter. Loop through the letters to do so
-        this.phrase.forEach(char => {
+
+        console.log(this.lettersList);
+        console.log(typeof this.phrase);
+        // create li items for each letter in the phrase. Loop through the letters to do so
+        this.phrase.split('').forEach(char => {
             // create li items. set their textContent to the character
             let li = document.createElement('li');
             li.textContent = char;
@@ -30,11 +32,8 @@ class Phrase {
             }
 
             // append li item to list item
-            lettersList.appendChild(li);
+            this.lettersList.appendChild(li);
         });
-
-        // add parent element to page
-        lettersParent;
     }
     // check to see if the letter selected by the player matches a letter in the phrase
     checkLetter(phrase, element) {
@@ -49,10 +48,11 @@ class Phrase {
     showMatchedLetter(letter) {
         // select letter DOM elements with class name that matches letter 
         let matchedElements = document.getElementsByClassName(letter);
+        console.log(matchedElements);
         // replace each selected element's 'hide' class with 'show' class
-        matchedElements.forEach(element => {
-            element.classList.replace('hide', 'show');
-        });
+        for (let i = 0; i < matchedElements.length; i++) {
+        matchedElements[i].classList.replace('hide', 'show');
+        }
     }
 }
 
