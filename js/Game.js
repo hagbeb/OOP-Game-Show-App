@@ -133,7 +133,6 @@ class Game {
             this.hearts[i].src = 'images/liveHeart.png';
         }
         console.log(this.hearts);
-
     }
 }
 

@@ -7,17 +7,36 @@ const start = document.getElementById('btn__reset');
 start.addEventListener('click', (e) => {
     // create a new game object
     let currentGame = new Game();
+
     // start the game
     currentGame.startGame();
 
     // get and store the section with the keys on the page
     const keyArea = document.getElementById('qwerty');
-    console.log(keyArea);
-    // listen for a click on the area, then (using bubbling) check if a letter key was clicked
+    // listen for a click or keypress on the area
     keyArea.addEventListener('click', (e) => {
-        // if it was a key clicked, call handleInteraction, passing in the letter that was clicked
+        // if it was a key clicked/pressed, call handleInteraction, passing in the relevant letter
         if (e.target.tagName === 'BUTTON') {
-            currentGame.handleInteraction(e.target);            }
+            console.log(e.target);
+            currentGame.handleInteraction(e.target);            
+        }
+    });
+    // listen for key presses so users can use those to play
+    document.addEventListener('keyup', (e) => {
+        // if the key pressed was a letter
+        const reg = new RegExp('[a-z]');
+        if(reg) {
+            // get the button which matches the key
+            // get all the keys and store in 'buttons'
+            const buttons = document.querySelectorAll('.key');
+            // find the button which matches the key pressed, then call handleInteraction,...
+            // ... passing in button
+            buttons.forEach(button => {
+                if(button.textContent === e.key) {
+                    currentGame.handleInteraction(button);            
+                }
+            })
+        }
     });
 })
 
