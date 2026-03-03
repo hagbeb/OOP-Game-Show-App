@@ -1,10 +1,9 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
-console.log('test2');
+
 // create Game class
 class Game {
-
     constructor() {
         // track the number of missed guesses
         this.missed = 0,
@@ -26,12 +25,11 @@ class Game {
 
     // start the game
     startGame() {
-        console.log('starting game, this.missed: ', this.missed);
+        console.log('starting game');
         // hide the start screen overlay
         this.overlay.style.display = 'none';
         // get a phrase and set it to activePhrase
         this.activePhrase = this.getRandomPhrase();
-        console.log(this.activePhrase);
         // add the phrase to the page
         this.activePhrase.addPhraseToDisplay();
     }
@@ -39,7 +37,6 @@ class Game {
     getRandomPhrase() {
         // generate number between 0 and 4, use that to get a phrase from Phrases array
         let index = Math.floor(Math.random() * 5);
-        console.log('phrase index', index);
         // return the phrase
         return this.phrases[index];
     }
@@ -69,14 +66,9 @@ class Game {
     removeLife() {
         // increment missed property
         this.missed += 1;
-
         // change the heart icon for the last active life by changing the image (use src attribute)
         // get the last active index by substracting the number of misses from the number of hearts
-        console.log(this.missed);
-        console.log(5 - this.missed);
-        console.log(this.hearts[5 - this.missed]);
         this.hearts[5 - this.missed].src = 'images/lostHeart.png';
-
         // if the player has 5 misses, call gameOver
         if (this.missed === 5) {
             this.gameOver('lost');
@@ -117,7 +109,6 @@ class Game {
         console.log('resetting game');
         // change this.missed back to 0
         this.missed = 0;
-        console.log('this.missed: ', this.missed);
         // Remove all li elements from the ul element.
         this.activePhrase.lettersList.innerHTML = '';
         // get and store the section with the keys on the page
@@ -127,12 +118,10 @@ class Game {
             keys[i].disabled = false;
             keys[i].className = 'key';
         }
-        console.log('keys: ', keys);
         // reset heart images to default
         for (let i = 0; i < this.hearts.length; i++) {
             this.hearts[i].src = 'images/liveHeart.png';
         }
-        console.log(this.hearts);
         // set handleInteraction and removeLife to null so they don't activate on old objects
         this.handleInteraction = null;
         this.removeLife = null;

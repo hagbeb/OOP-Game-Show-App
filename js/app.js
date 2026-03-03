@@ -8,7 +8,6 @@ start.addEventListener('click', (e) => {
     let currentGame = new Game();
     // start the game
     currentGame.startGame();
-
     // get and store the section with the keys on the page
     const keyArea = document.getElementById('qwerty');
     // listen for a click or keypress on the area

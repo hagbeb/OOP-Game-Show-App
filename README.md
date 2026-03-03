@@ -4,9 +4,9 @@
 
 - (line 68 in style.css) button:hover property added to increase button size to 1.3 times when hovered over.
 
-- (line 64) box-shadow added to buttons usin box-shadow property
+- (line 64) A shadow has been added to the buttons using box-shadow property.
 
-- (line 31) body given a subtle background gradient using background-image property.
+- (line 31) The body has been given a subtle background gradient using the 'background-image' property.
 
 - (lines 233-235 and 104-106) The title is animated from it's default colour to red. This repeats infinitely. This was set in CSS.
 

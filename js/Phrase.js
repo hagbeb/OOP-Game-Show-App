@@ -7,15 +7,12 @@ class Phrase {
     // constructor. Pass in phrase we want to create. Set to 'phrase' property, set to lower case
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
-                // get the ul element whose direct parent div has id of 'phrase'
+        // get the ul element whose direct parent div has id of 'phrase'
         this.lettersList = document.querySelector('#phrase > ul');
     }
 
     // method to add letter placeholders to the display when the game starts
     addPhraseToDisplay() {
-
-        console.log(this.lettersList);
-        console.log(typeof this.phrase);
         // create li items for each letter in the phrase. Loop through the letters to do so
         this.phrase.split('').forEach(char => {
             // create li items. set their textContent to the character
@@ -30,7 +27,6 @@ class Phrase {
             } else {
                 li.classList.add('space');
             }
-
             // append li item to list item
             this.lettersList.appendChild(li);
         });
@@ -48,7 +44,6 @@ class Phrase {
     showMatchedLetter(letter) {
         // select letter DOM elements with class name that matches letter 
         let matchedElements = document.getElementsByClassName(letter);
-        console.log(matchedElements);
         // replace each selected element's 'hide' class with 'show' class
         for (let i = 0; i < matchedElements.length; i++) {
             matchedElements[i].classList.replace('hide', 'show');
