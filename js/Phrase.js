@@ -51,7 +51,14 @@ class Phrase {
         console.log(matchedElements);
         // replace each selected element's 'hide' class with 'show' class
         for (let i = 0; i < matchedElements.length; i++) {
-        matchedElements[i].classList.replace('hide', 'show');
+            matchedElements[i].classList.replace('hide', 'show');
+            // add the 'transition' class for 1 second, then remove if the element still exists
+            matchedElements[i].classList.add('transition');
+            setTimeout(() => {
+                if(matchedElements[i]) {
+                    matchedElements[i].classList.remove('transition');
+                }
+            }, 1000);
         }
     }
 }

@@ -133,6 +133,9 @@ class Game {
             this.hearts[i].src = 'images/liveHeart.png';
         }
         console.log(this.hearts);
+        // set handleInteraction and removeLife to null so they don't activate on old objects
+        this.handleInteraction = null;
+        this.removeLife = null;
     }
 }
 

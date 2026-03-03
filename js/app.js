@@ -5,9 +5,7 @@
 // get 'Start Game' button and listen for it being clicked
 const start = document.getElementById('btn__reset');
 start.addEventListener('click', (e) => {
-    // create a new game object
     let currentGame = new Game();
-
     // start the game
     currentGame.startGame();
 

@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: linear-gradient(to bottom right, #fff, #ffdddd);;
 }
 
 li, ol, ul {
@@ -40,6 +41,7 @@ h2 {
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 0;
+  font-family: 'cinzel';
 }
 
 h1 {
@@ -58,10 +60,17 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  /* add shadow to buttons */
+  box-shadow: 4px 9px #888888;
 }
 
 /* transition buttons when hovered over */
 button:hover {
+  transform: scale(1.3, 1.3);
+}
+
+/* transition letters when they are revealed */
+li.show.transition {
   transform: scale(1.3, 1.3);
 }
 
@@ -92,6 +101,9 @@ button:hover {
 
 .header {
   color: #3a3f58;
+  animation-name: titleAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite; 
 }
 
 
@@ -185,7 +197,7 @@ button:hover {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #3B0004;
 }
 
 .start a {
@@ -206,4 +218,9 @@ button:hover {
 
 .lose a {
   color: var(--color-lose);
+}
+
+@keyframes titleAnimation {
+  from {color: #3a3f58;}
+  to {color: red;}
 }
